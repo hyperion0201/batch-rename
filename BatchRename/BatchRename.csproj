@@ -63,6 +63,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Features\ExtensionAction.cs" />
+    <Compile Include="Features\RemoveAction.cs" />
+    <Compile Include="Features\ReplaceAction.cs" />
+    <Compile Include="Features\StringAction.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,7 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Resource Include="Resources\Drawable\ExpandChevronDown_16x.png" />
+    <Resource Include="Resources\Drawable\ExpandChevronUp_16x.png" />
+    <Resource Include="Resources\Drawable\GoToBottom_16x.png" />
+    <Resource Include="Resources\Drawable\GoToTop_16x.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\AddFile_16x.png" />
@@ -110,6 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Drawable\Rename_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\loadpreset.png" />
+    <Resource Include="Resources\Drawable\Save_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

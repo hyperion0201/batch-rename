@@ -22,7 +22,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
+        <Style x:Key="MyToolBarTray" TargetType="ToolBar">
+            <Setter Property="IsOverflowOpen" Value="False"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+        </Style>
     </Application.Resources>
 </Application>

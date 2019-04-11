@@ -8,105 +8,186 @@
         Title="Batch Rename 1.0" Height="600" Width="900"
         Icon="Resources/Drawable/Rename_16x.png">
     <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal" Background="GhostWhite" Height="30">
-            <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources/Drawable/Refresh_16x.png" Stretch="None"/>
-                    <TextBlock Text=" Refresh"></TextBlock>
+        <ToolBarTray Background="AliceBlue">
+            <ToolBar Name="quickActionBar">
+                <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
+                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/Drawable/Refresh_16x.png" Stretch="None"/>
+                            <TextBlock Text=" Refresh"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source=" Resources/Drawable/StatusHelp_16x.png" Stretch="None"/>
+                            <TextBlock Text=" Help"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/Drawable/StatusRun_16x.png" Stretch="None"/>
+                            <TextBlock Text=" Start Batch"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
-            </Button>
-            <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source=" Resources/Drawable/StatusHelp_16x.png" Stretch="None"/>
-                    <TextBlock Text=" Help"></TextBlock>
+            </ToolBar>
+        </ToolBarTray>
+
+        <ToolBarTray Background="AliceBlue">
+            <ToolBar Name="Lmao">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Menu Margin="0,0,10,0">
+                        <MenuItem Height="30" Background="AliceBlue" BorderThickness="0">
+                            <MenuItem.Header>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Resources/Drawable/AddMethod_16x.png" Stretch="None"/>
+                                    <TextBlock Text=" Add Method"/>
+                                </StackPanel>
+                            </MenuItem.Header>
+                            <MenuItem Header="Lmao1"/>
+                        </MenuItem>
+                    </Menu>
+                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/Drawable/ClearMessageQueue_16x.png" Stretch="None"/>
+                            <TextBlock Text=" Clear"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="20" Style="{StaticResource MyButton}">
+                        <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                    </Button>
+                    <Button Width="20" Style="{StaticResource MyButton}">
+                        <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                    </Button>
+                    <Button Width="20" Style="{StaticResource MyButton}">
+                        <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                    </Button>
+                    <Button Width="20" Style="{StaticResource MyButton}">
+                        <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                    </Button>
                 </StackPanel>
-            </Button>
-            <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources/Drawable/StatusRun_16x.png" Stretch="None"/>
-                    <TextBlock Text=" Start Batch"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <ToolBarTray>
+            <ToolBar Name="presetBar">
+                <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
+                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/Drawable/loadpreset.png" Width="20" Height="20"/>
+
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source=" Resources/Drawable/Save_16x.png" Width="20" Height="20"/>
+                        </StackPanel>
+                    </Button>
+                    <TextBlock Text="Preset : " VerticalAlignment="Center"/>
+                    <ComboBox Width="100" Height="25">
+
+                    </ComboBox>
                 </StackPanel>
-            </Button>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Background="GhostWhite" Width="250" HorizontalAlignment="Left">
-            <ComboBox Width="150" Height="30" BorderThickness="0" Background="Red">
-                <ComboBoxItem IsSelected="True">
-                    <StackPanel Orientation="Horizontal" Height="25">
-                        <Image Source="Resources/Drawable/AddMethod_16x.png" Height="15" Width="15"/>
-                        <TextBlock Text=" Add Method" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    <StackPanel Orientation="Horizontal" Height="25">
-                        <Image Source="Resources/Drawable/RemoveCommand_16x.png" Height="15" Width="15"/>
-                        <TextBlock Text=" Remove Method" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </ComboBoxItem>
-            </ComboBox>
-            <Button Style="{StaticResource MyButton}" Margin="5">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="Resources/Drawable/ClearMessageQueue_16x.png"/>
-                    <TextBlock Text=" Clear All"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+            </ToolBar>
+        </ToolBarTray>
+
         <Grid ShowGridLines="False">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="221"/>
+                <ColumnDefinition Width="313*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-           </Grid.RowDefinitions>
+               
+            </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Vertical" Grid.Column="0">
-                <WrapPanel Margin="5,1,0,1">
-                    <TextBlock VerticalAlignment="Center" Text="Methods available: "/>
-                    <ComboBox Width="130" ></ComboBox>
-                </WrapPanel>
-                <ListView Height="200">
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Edit this method"/>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                    <ListViewItem>Lmao</ListViewItem>
-                </ListView>
-            </StackPanel>
-            <TabControl Grid.Column="1" Grid.Row="0">
+
+            <ListView Height="300" Grid.Column="0" Grid.Row="0">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit this method"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                
+                <ListViewItem>lmao</ListViewItem>
+            </ListView>
+
+            <TabControl Grid.Column="2" Grid.Row="0" Margin="0,0,0,0" Grid.ColumnSpan="2">
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/AddFile_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Add Files"/>
+                            <TextBlock Text=" Rename Files"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <DataGrid BorderThickness="0" Name="FileDataGrid" AutoGenerateColumns="False" Background="Transparent">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Filename" Width="150"/>
-                            <DataGridTextColumn Header="New filename" Width="150"/>
-                            <DataGridTextColumn Header="Path" Width="150"/>
-                            <DataGridTextColumn Header="Error" Width="*"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <StackPanel Orientation="Vertical" >
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <Button BorderThickness="1" Background="LightGray" Margin="0,0,10,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Resources/Drawable/AddFile_16x.png" Stretch="None"/>
+                                    <TextBlock Text=" Add files..."/>
+                                </StackPanel>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                            </Button>
+                        </StackPanel>
+                        <DataGrid BorderThickness="0" Name="FileDataGrid" AutoGenerateColumns="False" Background="Transparent">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Filename" Width="150"/>
+                                <DataGridTextColumn Header="New filename" Width="150"/>
+                                <DataGridTextColumn Header="Path" Width="150"/>
+                                <DataGridTextColumn Header="Error" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </StackPanel>
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/AddFolder_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Add Folders"/>
+                            <TextBlock Text=" Rename Folder"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <DataGrid BorderThickness="0" Name="FolderDataGrid" AutoGenerateColumns="False" Background="Transparent">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Folder name" Width="150"/>
-                            <DataGridTextColumn Header="New folder name" Width="150"/>
-                            <DataGridTextColumn Header="Path" Width="150"/>
-                            <DataGridTextColumn Header="Error" Width="*"/>
-                        </DataGrid.Columns>    
-                    </DataGrid>
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0">
+                            <Button BorderThickness="1" Background="LightGray" Margin="0,0,10,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Resources/Drawable/AddFolder_16x.png" Stretch="None"/>
+                                    <TextBlock Text=" Add folders..."/>
+                                </StackPanel>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                            </Button>
+                        </StackPanel>
+                        <DataGrid BorderThickness="0" Name="FolderDataGrid" AutoGenerateColumns="False" Background="Transparent">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Folder name" Width="150"/>
+                                <DataGridTextColumn Header="New folder name" Width="150"/>
+                                <DataGridTextColumn Header="Path" Width="150"/>
+                                <DataGridTextColumn Header="Error" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
                 </TabItem>
             </TabControl>
         </Grid>

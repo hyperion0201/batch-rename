@@ -22,8 +22,5 @@ namespace BatchRename {
             InitializeComponent();
         }
 
-        private void FolderListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }
     }
 }
