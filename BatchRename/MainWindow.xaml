@@ -6,149 +6,176 @@
         xmlns:local="clr-namespace:BatchRename"
         mc:Ignorable="d"
         Title="Batch Rename 1.0" Height="600" Width="900"
-        Icon="Resources/Drawable/Rename_16x.png">
-    <StackPanel Orientation="Vertical">
-        <ToolBarTray Background="AliceBlue">
-            <ToolBar Name="quickActionBar">
-                <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
-                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/Refresh_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Refresh"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source=" Resources/Drawable/StatusHelp_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Help"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/StatusRun_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Start Batch"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-            </ToolBar>
-        </ToolBarTray>
+        Icon="Resources/Drawable/Rename_16x.png"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ElementName=MenuLayout, Path=Height}"/>
+            <RowDefinition Height=".8*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="MenuLayout" Grid.Row="0" Orientation="Vertical">
+            <ToolBarTray Background="AliceBlue">
+                <ToolBar Name="quickActionBar">
+                    <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
+                        <Button Style="{StaticResource MyButton}" Margin="10,0,10,0" Click="OnRefresh">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/Drawable/Refresh_16x.png" Stretch="None"/>
+                                <TextBlock Text=" Refresh"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Click="ShowHelpDialog" Style="{StaticResource MyButton}" Margin="5,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source=" Resources/Drawable/StatusHelp_16x.png" Stretch="None"/>
+                                <TextBlock Text=" Help"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MyButton}" Margin="5,0,10,0" Click="StartBatch">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/Drawable/StatusRun_16x.png" Stretch="None"/>
+                                <TextBlock Text=" Start Batch"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarTray>
 
-        <ToolBarTray Background="AliceBlue">
-            <ToolBar Name="Lmao">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Menu Margin="0,0,10,0">
-                        <MenuItem Height="30" Background="AliceBlue" BorderThickness="0">
-                            <MenuItem.Header>
+            <ToolBarTray Background="AliceBlue">
+                <ToolBar Name="Lmao">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Margin="10,0,0,0" Text="Methods available : " VerticalAlignment="Center"/>
+                        <ComboBox Name="methodBox" Width="150" Height="25">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Margin="10,0,10,0" Style="{StaticResource MyButton}" Click="AddMethod">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/Drawable/Add_16x.png" Stretch="None"/>
+                                <TextBlock Text=" Add"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="ClearMethodListView" Style="{StaticResource MyButton}" Margin="10,0,10,0" Click="ClearMethodList">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/Drawable/ClearMessageQueue_16x.png" Stretch="None"/>
+                                <TextBlock Text=" Clear"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="MoveTop" Click="MoveMethodTop" Width="20" Style="{StaticResource MyButton}">
+                            <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                        </Button>
+                        <Button Name="MoveUp"  Width="20" Style="{StaticResource MyButton}" Click="MoveMethodUp">
+                            <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                        </Button>
+                        <Button Name="MoveDown" Width="20" Style="{StaticResource MyButton}" Click="MoveMethodDown">
+                            <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                        </Button>
+                        <Button Name="MoveBottom" Click="MoveMethodBottom" Width="20" Style="{StaticResource MyButton}">
+                            <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                        </Button>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarTray>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="Resources/Drawable/AddMethod_16x.png" Stretch="None"/>
-                                    <TextBlock Text=" Add Method"/>
-                                </StackPanel>
-                            </MenuItem.Header>
-                            <MenuItem Header="Lmao1"/>
-                        </MenuItem>
-                    </Menu>
-                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/ClearMessageQueue_16x.png" Stretch="None"/>
-                            <TextBlock Text=" Clear"></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Width="20" Style="{StaticResource MyButton}">
-                        <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
-                    </Button>
-                    <Button Width="20" Style="{StaticResource MyButton}">
-                        <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
-                    </Button>
-                    <Button Width="20" Style="{StaticResource MyButton}">
-                        <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
-                    </Button>
-                    <Button Width="20" Style="{StaticResource MyButton}">
-                        <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
-                    </Button>
-                </StackPanel>
-            </ToolBar>
-        </ToolBarTray>
+            <ToolBarTray>
+                <ToolBar Name="presetBar">
+                    <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
+                        <Button Click="OnLoadPreset" Style="{StaticResource MyButton}" Margin="10,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/Drawable/loadpreset.png" Width="20" Height="20"/>
 
-        <ToolBarTray>
-            <ToolBar Name="presetBar">
-                <StackPanel Orientation="Horizontal" Background="AliceBlue" Height="30">
-                    <Button Style="{StaticResource MyButton}" Margin="10,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Resources/Drawable/loadpreset.png" Width="20" Height="20"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Click="OnSavePreset" Style="{StaticResource MyButton}" Margin="5,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source=" Resources/Drawable/Save_16x.png" Width="20" Height="20"/>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Text="Preset : " VerticalAlignment="Center"/>
+                        <ComboBox Name="methodPreset" Width="150" Height="25" Margin="0,2" DropDownClosed="OnChangePreset">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarTray>
 
-                        </StackPanel>
-                    </Button>
-                    <Button Style="{StaticResource MyButton}" Margin="5,0,10,0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source=" Resources/Drawable/Save_16x.png" Width="20" Height="20"/>
-                        </StackPanel>
-                    </Button>
-                    <TextBlock Text="Preset : " VerticalAlignment="Center"/>
-                    <ComboBox Width="100" Height="25">
-
-                    </ComboBox>
-                </StackPanel>
-            </ToolBar>
-        </ToolBarTray>
-
-        <Grid ShowGridLines="False">
+        </StackPanel>
+        <Grid Grid.Row="1" ShowGridLines="False">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="221"/>
-                <ColumnDefinition Width="313*"/>
+                <ColumnDefinition Width="221*"/>
+                <ColumnDefinition Width="29*"/>
+                <ColumnDefinition Width="643*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-               
+                <RowDefinition Height="137*"/>
+
             </Grid.RowDefinitions>
-
-
-            <ListView Height="300" Grid.Column="0" Grid.Row="0">
-                <ListView.ContextMenu>
+            <ListBox Name="methodListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+                            <TextBlock Text=" : " TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Args.Details}" TextWrapping="Wrap"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Edit this method"/>
+                        <MenuItem Header="Configure..." Click="ConfigureMethod"/>
+                        <MenuItem Header="Remove" Click="RemoveMethod"/>
                     </ContextMenu>
-                </ListView.ContextMenu>
-                
-                <ListViewItem>lmao</ListViewItem>
-            </ListView>
-
-            <TabControl Grid.Column="2" Grid.Row="0" Margin="0,0,0,0" Grid.ColumnSpan="2">
+                </ListBox.ContextMenu>
+            </ListBox>
+            <TabControl Grid.Column="1"  Margin="0,0,0,0" Grid.ColumnSpan="2">
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text=" Rename Files"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Orientation="Vertical" >
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <Button BorderThickness="1" Background="LightGray" Margin="0,0,10,0">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="Resources/Drawable/AddFile_16x.png" Stretch="None"/>
-                                    <TextBlock Text=" Add files..."/>
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
-                            </Button>
-                        </StackPanel>
-                        <DataGrid BorderThickness="0" Name="FileDataGrid" AutoGenerateColumns="False" Background="Transparent">
+                    <StackPanel Orientation="Vertical">
+                        <Border BorderBrush="LightGray" BorderThickness="1">
+                            <StackPanel  Orientation="Horizontal" Margin="0,0,0,0" Height="25" Background="AliceBlue">
+                                <Button Width="80" Margin="0,0,15,0" Background="AliceBlue" 
+                                        Name="AddFileButton" Click="OpenFileBrowser" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/Drawable/AddFile_16x.png" Stretch="None"/>
+                                        <TextBlock Text=" Browse..."/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="MoveFileTop" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFileUp" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFileDown" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFileBottom" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                        <DataGrid Name="FileTab" BorderThickness="0" AutoGenerateColumns="False"
+                                  GridLinesVisibility="All"
+                                  Background="Transparent">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Filename" Width="150"/>
-                                <DataGridTextColumn Header="New filename" Width="150"/>
-                                <DataGridTextColumn Header="Path" Width="150"/>
-                                <DataGridTextColumn Header="Error" Width="*"/>
+                                <DataGridTextColumn Header="Filename" Width="150" Binding="{Binding FileName}"/>
+                                <DataGridTextColumn Header="New filename" Width="150" Binding="{Binding NewFileName}"/>
+                                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path}"/>
+                                <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Error}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-
                     </StackPanel>
                 </TabItem>
                 <TabItem>
@@ -157,39 +184,41 @@
                             <TextBlock Text=" Rename Folder"/>
                         </StackPanel>
                     </TabItem.Header>
-
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0">
-                            <Button BorderThickness="1" Background="LightGray" Margin="0,0,10,0">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="Resources/Drawable/AddFolder_16x.png" Stretch="None"/>
-                                    <TextBlock Text=" Add folders..."/>
-                                </StackPanel>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
-                            </Button>
-                            <Button>
-                                <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
-                            </Button>
-                        </StackPanel>
-                        <DataGrid BorderThickness="0" Name="FolderDataGrid" AutoGenerateColumns="False" Background="Transparent">
+                    <StackPanel Orientation="Vertical">
+                        <Border BorderBrush="LightGray" BorderThickness="1">
+                            <StackPanel  Orientation="Horizontal" Margin="0,0,0,0" Height="25" Background="AliceBlue">
+                                <Button Width="80" Margin="0,0,15,0" Background="AliceBlue" Name="AddFolderButton" Click="OpenFolderBrowser" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Resources/Drawable/AddFile_16x.png" Stretch="None"/>
+                                        <TextBlock Text=" Browse..."/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="MoveFolderTop" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/GoToTop_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFolderUp" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/ExpandChevronUp_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFolderDown" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/ExpandChevronDown_16x.png" Stretch="None"/>
+                                </Button>
+                                <Button Click="MoveFolderBottom" Width="20" Style="{StaticResource MyButton}">
+                                    <Image Source="Resources/Drawable/GoToBottom_16x.png" Stretch="None"/>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                        <DataGrid BorderThickness="0" Name="FolderTab" AutoGenerateColumns="False" Background="Transparent" GridLinesVisibility="None">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Folder name" Width="150"/>
-                                <DataGridTextColumn Header="New folder name" Width="150"/>
-                                <DataGridTextColumn Header="Path" Width="150"/>
-                                <DataGridTextColumn Header="Error" Width="*"/>
+                                <DataGridTextColumn Header="Folder name" Width="150" Binding="{Binding FileName}"/>
+                                <DataGridTextColumn Header="New folder name" Width="150" Binding="{Binding NewFileName}"/>
+                                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path}"/>
+                                <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Error}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
                 </TabItem>
             </TabControl>
+
         </Grid>
-    </StackPanel>
+    </Grid>
 </Window>

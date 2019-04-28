@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Features\CaseAction.cs" />
+    <Compile Include="Features\GUIDAction.cs" />
+    <Compile Include="Features\ISBNAction.cs" />
+    <Compile Include="Features\NormalizeAction.cs" />
+    <Compile Include="Utils\CaseDialog.xaml.cs">
+      <DependentUpon>CaseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\File.cs" />
+    <Compile Include="Utils\AdditionalFunctions.cs" />
+    <Compile Include="Utils\ExtensionDialog.xaml.cs">
+      <DependentUpon>ExtensionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\HelpDialog.xaml.cs">
+      <DependentUpon>HelpDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ISBNDialog.xaml.cs">
+      <DependentUpon>ISBNDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Preset.cs" />
+    <Compile Include="Utils\PresetDialog.xaml.cs">
+      <DependentUpon>PresetDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\PreviewDialog.xaml.cs">
+      <DependentUpon>PreviewDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\RemoveDialog.xaml.cs">
+      <DependentUpon>RemoveDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ReplaceDialog.xaml.cs">
+      <DependentUpon>ReplaceDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +103,38 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Utils\CaseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\ExtensionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\HelpDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\ISBNDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\PresetDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\PreviewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\RemoveDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\ReplaceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -121,6 +185,15 @@
   <ItemGroup>
     <Resource Include="Resources\Drawable\loadpreset.png" />
     <Resource Include="Resources\Drawable\Save_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\submit_6x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\cancel_6x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Drawable\find_n_replace.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="BatchRename.Utils.PreviewDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BatchRename.Utils"
+        mc:Ignorable="d"
+        Title="Preview" Height="600" Width="800">
+    <Grid Margin="0,0,0,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock Margin="0,20,0,50" FontStyle="Italic">This is what your files/folder look like after you click Start Batch. Please review, resolve which error to make sure everything is ok.</TextBlock>
+            <DataGrid Name="previewTab" BorderThickness="0" AutoGenerateColumns="False"
+                                  GridLinesVisibility="All"
+                                  Background="Transparent">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Filename" Width="150" Binding="{Binding FileName}"/>
+                    <DataGridTextColumn Header="New filename" Width="150" Binding="{Binding NewFileName}"/>
+                    <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path}"/>
+                    <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Error}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock HorizontalAlignment="Center" Margin="10,10,0,10" Text="What do you want to do with duplicate files ?"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton Margin="0,0,20,0" Name="keepOldName" Content="Keep old name"/>
+                <RadioButton Name="addNumberAfter" Content="Add number after"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Border BorderThickness="1" BorderBrush="LightGray" Margin="0,0,50,0">
+                <Button Style="{StaticResource MyButton}" Height="30" Margin="5" Width="100" Click="SubmitBatch">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Drawable/submit_6x.png" Width="16" Height="16" />
+                        <TextBlock Text=" Submit"/>
+                    </StackPanel>
+                </Button>
+            </Border>
+            <Border BorderBrush="LightGray" BorderThickness="1" >
+                <Button Style="{StaticResource MyButton}" Height="30" Width="100" Click="Cancel" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Drawable/cancel_6x.png" Width="16" Height="16"/>
+                        <TextBlock Text=" Cancel"></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Border>
+
+        </StackPanel>
+
+    </Grid>
+    
+
+</Window>
